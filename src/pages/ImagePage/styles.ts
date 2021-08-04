@@ -13,17 +13,19 @@ export const ImageContainer = styled.div`
     
     justify-content: center;
     align-items: center;
-    width: 480px;
-    height: 480px;
+    width: 500px;
+    height: 500px;
     border-left: 2px solid #e5e5e5;
     border-right: 2px solid #e5e5e5;
     border-top: 2px solid #e5e5e5;
+    margin-top: 16px;
     
 `;
 
 export const ImagePortrait = styled.img`
-    width: 460px;
-    height: 460px;
+    width: 480px;
+    height: 480px;
+    margin-top: 8px;
     border: 2px solid var(--pink);
 `;
 
@@ -32,7 +34,7 @@ export const TagsContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 480px;
+    width: 500px;
     height: 90px;
     padding: 8px;
     border-left: 2px solid #e5e5e5;
