@@ -2,6 +2,7 @@ import { useCallback, useEffect } from "react";
 import { useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { Navbar } from "../../components/Navbar";
+import { Spinner } from "../../components/Spinner";
 import { api } from "../../services/api";
 import { Container, ImagePortrait, ImageContainer, TagsContainer, TagPill } from "./styles";
 
@@ -26,12 +27,11 @@ export function ImagePage() {
     const [isLoading, setIsloading] = useState(false);
     const { params } = useRouteMatch<ImageParams>();
 
-    console.log(image);
-
     const getImage = useCallback(async () => {
         setIsloading(true);
         const response = await api.get(`images/${params.id}`);
         setImage(response.data);
+        setIsloading(false);
     }, [params.id]);
 
     useEffect(() => {
@@ -42,16 +42,22 @@ export function ImagePage() {
         <>
             <Navbar />
             <Container>
-                <ImageContainer>
-                    <ImagePortrait src={image?.url} alt="" />
-                </ImageContainer>
-                <TagsContainer>
-                    {image?.tags.map(tag => (
-                        <TagPill key={tag._id}>
-                            {tag.tagName}
-                        </TagPill>
-                    ))}
-                </TagsContainer>
+                {isLoading ? (
+                    <Spinner />
+                ) : (
+                    <>
+                        <ImageContainer>
+                            <ImagePortrait src={image?.url} alt={image?.tags[0].tagName} />
+                        </ImageContainer>
+                        <TagsContainer>
+                            {image?.tags.map(tag => (
+                                <TagPill key={tag._id}>
+                                    {tag.tagName}
+                                </TagPill>
+                            ))}
+                        </TagsContainer>
+                    </>
+                )}
             </Container>
         </>
     );
