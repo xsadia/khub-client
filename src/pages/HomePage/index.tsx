@@ -66,8 +66,8 @@ export function HomePage() {
                     ) : (
                         <ImageContainer>
                             {initialImages.map(image => (
-                                <Link to={`/images/${image._id}`}>
-                                    <ImageCard key={image._id} tags={image.tags} url={image.url} />
+                                <Link key={image._id} to={`/images/${image._id}`}>
+                                    <ImageCard tags={image.tags} url={image.url} />
                                 </Link>
                             ))}
                         </ImageContainer>
