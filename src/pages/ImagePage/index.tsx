@@ -97,7 +97,7 @@ export function ImagePage() {
                                         </ButtonTagContainer>
                                     ))}
 
-                                    {tags.length >= 6 ? (
+                                    {tags.length >= 3 ? (
                                         null
                                     ) : (
                                         <EditInput
