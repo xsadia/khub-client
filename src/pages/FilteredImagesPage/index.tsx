@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import { ImageCard } from "../../components/ImageCard";
 import { Navbar } from "../../components/Navbar";
 import { Spinner } from "../../components/Spinner";
@@ -50,7 +50,9 @@ export function FilteredImagesPage() {
                             <Spinner />
                         ) : (
                             images.map(image => (
-                                <ImageCard key={image._id} tags={image.tags} url={image.url} />
+                                <Link to={`/images/${image._id}`} key={image._id}>
+                                    <ImageCard tags={image.tags} url={image.url} />
+                                </Link>
                             ))
                         )}
                     </ImageContainer>

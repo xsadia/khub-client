@@ -39,7 +39,8 @@ export const TagPill = styled.div`
     font-size: 14px;
     margin-bottom: 4px;
     margin-left: 8px;
-    background: #fff;
+    background: var(--pink);
+    color: #fff;
 
     & + div {
         margin-left: 8px;
